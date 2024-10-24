@@ -1,4 +1,4 @@
-import System.Random
+import System.Random -- required: cabal install --lib random
 
 
 -- this is the main entry point for the program
