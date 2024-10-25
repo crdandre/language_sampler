@@ -53,11 +53,6 @@ Each implementation should:
    - Memory usage over time (sampled every 100ms)
    - Garbage collection frequency and duration (if applicable)
 
-4. Development time:
-   - Time to implement basic functionality (in person-hours)
-   - Time to optimize for performance (in person-hours)
-   - Learning curve rating (1-10 scale, 1 being easiest)
-
 5. Parallel processing capabilities:
    - Speedup factor when using multiple cores (2, 4, 8 cores)
    - Scalability: performance change from 1,000 to 1,000,000 samples
