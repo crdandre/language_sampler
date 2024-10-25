@@ -9,6 +9,7 @@ This program implements a signal processing pipeline:
 import Data.Complex
 import System.Random -- required: cabal install --lib random
 
+
 -- Pure function that generates signal given noise
 generateSignal :: Int -> Double -> [Double] -> [Double]
 generateSignal n freq noise = zipWith (+) sineWave (take n noise)
@@ -21,6 +22,7 @@ generateSignal n freq noise = zipWith (+) sineWave (take n noise)
     
     sineWave :: [Double]
     sineWave = [sin (2 * pi * freq * t) | t <- timePoints]
+
 
 -- IO wrapper that handles random number generation
 generateSyntheticData :: Int -> Double -> Double -> IO [Double]
@@ -46,6 +48,7 @@ movingAverageFilter windowSize signal
         slidingWindows = 
             [ take windowSize (drop i signal) 
             | i <- [0..length signal - windowSize] ]
+
 
 --  basic DFT
 basicDFT :: [Double] -> [Complex Double]
@@ -74,17 +77,7 @@ findPeaks threshold spectrum =
             magnitude val > magnitude (spectrum !! (i+1))     -- greater than next
 
 
-getTimingMetrics :: [Double] -> IO ()
-getTimingMetrics signal = do
-    let filteredSignal = movingAverageFilter 50 signal
-    let fftSignal = basicDFT filteredSignal
-    let peaks = findPeaks 0.1 fftSignal
-    print peaks
-
-
 main :: IO ()
 main = do
     samples <- generateSyntheticData 10000 10.0 0.1
     print $ take 10 samples
-
-
