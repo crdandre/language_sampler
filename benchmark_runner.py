@@ -7,6 +7,8 @@ python benchmark_runner.py fft_task.py --language python
 
 For Julia
 python benchmark_runner.py fft_task.jl --language julia
+
+TODO: compiled vs interpreted haskell?
 """
 
 

@@ -75,6 +75,7 @@ findPeaks threshold spectrum =
             i > 0 && i < length spectrum - 1 &&  -- not first or last point
             magnitude val > magnitude (spectrum !! (i-1)) &&  -- greater than previous
             magnitude val > magnitude (spectrum !! (i+1))     -- greater than next
+            -- TODO: see whether !! is best here?
 
 
 main :: IO ()
